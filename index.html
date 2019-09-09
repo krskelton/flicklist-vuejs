@@ -17,15 +17,16 @@
     <section id="section-watchlist">
       <header>
         <h2>My Watchlist</h2>
+        
+        <ul>
+           <!--
+            TODO 7
+            Make an <li> for each movie in watchList
+            -->
+            <li v-for="(movie, index) in watchlistItems" :item="movie" :key="index">{{movie}}</li>
+        </ul> 
         <hr/>
       </header>
-
-      <ul>
-        <!--
-        TODO 7
-        Make an <li> for each movie in watchList
-        -->
-      </ul>
     </section>
 
     <!--
@@ -51,6 +52,13 @@
     handler on each of your <li> tags. Make sure to pass
     the movie into the function.
     -->
+    <div id="setion-browse">
+      <h2>Browse Movies</h2>
+      <ul>
+        <li v-for="(movie, index) in browseItems" :item="movie" :key="index">{{movie.title}} <input type="submit" value="Add to Watchlist" @click="addToWatchlist(movie.title)"></li>
+      </ul> 
+    </div>
+
   </div>
   <script src="js/flicklist.js"></script>
 
