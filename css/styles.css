@@ -1,12 +1,63 @@
-
+html{
+	font-family: 'Montserrat', sans-serif;
+}
+body {
+    margin: 0;
+}
 
 /*
 TODO 2c
 Customize the .jumbotron class to have centered text instead of left-aligned
 Also change its bottom margin to 1%
 */
-
-
+.jumbotron{
+	text-align:center;
+	background: #eee;
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+.jumbotron h1{
+	font-size: 63px;
+	font-weight:600;
+	margin-bottom: 1%;
+}
+.jumbotron p{
+	color: #777;
+	margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+}
+.main-content {
+	display: flex;
+	flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+}
+section#section-watchlist {
+    width: 41.66666667%;
+}
+#section-browse {
+    flex-grow: 2;
+    width: 58.33333333%;
+}
+h2 {
+    font-size: 30px;
+}
+h4 {
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+input[type="text"] {
+    width: 75%;
+    height: 25px;
+}
+form#form-search {
+    display: flex;
+    justify-content: space-between;
+}
+button, input[type="submit"] {
+	background: #337ab7 !important;
+}
 /*
 TODO 2h
 Give the Watchlist items some styles:
@@ -14,14 +65,26 @@ Give the Watchlist items some styles:
 - a little bit of margin on the bottom and right edges
 - no padding
 */
-
+li.item-watchlist {
+	list-style: none;
+	width: 160px;
+	margin: 0 auto;
+	padding:0;
+	text-align:center;
+}
+img.img-responsive {
+	width:100%;
+}
 
 /*
 TODO 2j
 The "I watched it" button should fill the entire width of its container, 
 and should be 10px below the neighbor element above it
 */
-
+input.btn.btn-danger {
+	width: 100%;
+	margin-bottom: 10px;
+}
 
 /*
 TODO 3c
@@ -79,4 +142,10 @@ button, input[type="submit"] {
 #section-browse li {
 	margin-bottom: 40px;
 	list-style: none;
+}
+
+@media only screen and (max-width: 657px){
+	.main-content {
+		flex-wrap:wrap;
+	}
 }
