@@ -1,7 +1,7 @@
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "f6bd21e39046f6a08df40d82ad8cffd3"
+  token: "16daec530c53f1a885429ca446fa8ebc"
 }
 
 var flicklistView = new Vue({
@@ -19,13 +19,13 @@ var flicklistView = new Vue({
 	methods: {
     // TODO 1
     // This function should accept an argument, `keywords`
-		discoverMovies: function () {
+		discoverMovies: function (keywords) {
 
       // TODO 2
       // ask the API for movies related to the keywords that were passed in above
       // HINT: add another key/value pair to the url given to fetch
 
-			fetch(`${api.root}/discover/movie?api_key=${api.token}`)
+			fetch(`${api.root}/discover/movie?api_key=${api.token}&with_keywords=${keywords}`)
 					.then(resp => resp.ok ? resp.json() : Promise.reject(resp))
 					.then((response) => {
 						console.log("We got a response from The Movie DB!");
@@ -69,11 +69,15 @@ var flicklistView = new Vue({
       // when the response comes back, call discoverMovies,
       // passing along the string of keywords as an argument
 
-      fetch(`${api.root}/search/movie?api_key=${api.token}&query=${searchTerm}`)
+      fetch(`${api.root}/search/keyword?api_key=${api.token}&query=${searchTerm}`)
       .then(resp => resp.ok ? resp.json() : Promise.reject(resp))
       .then((response) => {
         console.log("We got a response from The Movie DB!");
         console.log(response);
+        let keywordIDs = response.results.map(res => res.id);
+        let keywordString = keywordIDs.join('|');
+
+        this.discoverMovies(keywordString);
       });
 
     },
